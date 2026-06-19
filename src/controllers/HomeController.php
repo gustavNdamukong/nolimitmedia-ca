@@ -18,6 +18,15 @@ class HomeController extends DGZ_Controller
         return 'defaultAction';
     }
 
+    public function about(): void
+    {
+        $view = DGZ_View::getView('about', $this, 'html');
+        $this->setLayoutDirectory($this->config->getConfig()['layoutDirectory']);
+        $this->setLayoutView($this->config->getConfig()['defaultLayout']);
+        $this->setPageTitle('About Us');
+        $view->show();
+    }
+
     public function defaultAction(): void
     {
         $viewModel = [];

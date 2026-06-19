@@ -7,6 +7,7 @@
 // -----------------------------------------------------------------------
 $router->get('/',          'HomeController@defaultAction')->name('home');
 $router->get('/home',      'HomeController@defaultAction');
+$router->get('/about',     'HomeController@about')->name('about');
 
 $router->get("/portfolio",                "PortfolioController@portfolio");
 $router->get('/search',                   'SearchController@search');
