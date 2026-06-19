@@ -9,7 +9,17 @@
         <!-- Desktop nav -->
         <nav class="nlm-nav" id="nlmNav">
             <a href="<?= $this->config->getFileRootPath() ?>" class="nlm-nav-link">Home</a>
-            <a href="<?= $this->config->getFileRootPath() ?>services" class="nlm-nav-link">Services</a>
+            <!-- Services dropdown -->
+            <div class="nlm-dropdown">
+                <a href="<?= $this->config->getFileRootPath() ?>services" class="nlm-nav-link" style="display:inline-flex; align-items:center; gap:5px;">
+                    Services <i class="fas fa-chevron-down" style="font-size:.65rem; opacity:.7;"></i>
+                </a>
+                <div class="nlm-dropdown-menu">
+                    <a href="<?= $this->config->getFileRootPath() ?>coding-lessons" class="nlm-dropdown-item">
+                        <i class="fas fa-graduation-cap"></i> Coding Lessons
+                    </a>
+                </div>
+            </div>
 
             <!-- Content dropdown -->
             <div class="nlm-dropdown">
@@ -63,7 +73,13 @@
     <!-- Mobile nav drawer -->
     <div class="nlm-mobile-nav" id="nlmMobileNav">
         <a href="<?= $this->config->getFileRootPath() ?>" class="nlm-mobile-link">Home</a>
-        <a href="<?= $this->config->getFileRootPath() ?>services" class="nlm-mobile-link">Services</a>
+        <div class="nlm-mobile-section-label">Services</div>
+        <a href="<?= $this->config->getFileRootPath() ?>services" class="nlm-mobile-link nlm-mobile-sub">
+            <i class="fas fa-th-list"></i> All Services
+        </a>
+        <a href="<?= $this->config->getFileRootPath() ?>coding-lessons" class="nlm-mobile-link nlm-mobile-sub">
+            <i class="fas fa-graduation-cap"></i> Coding Lessons
+        </a>
         <div class="nlm-mobile-section-label">Content</div>
         <a href="<?= $this->config->getFileRootPath() ?>portfolio" class="nlm-mobile-link nlm-mobile-sub">
             <i class="fas fa-briefcase"></i> Portfolio

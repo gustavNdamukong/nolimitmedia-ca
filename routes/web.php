@@ -8,6 +8,10 @@
 $router->get('/',          'HomeController@defaultAction')->name('home');
 $router->get('/home',      'HomeController@defaultAction');
 $router->get('/about',     'HomeController@about')->name('about');
+$router->get('/services',       'HomeController@services')->name('services');
+$router->get('/coding-lessons',          'HomeController@codingLessons')->name('coding-lessons');
+$router->post('/coding-lessons/inquiry', 'HomeController@codingLessonsInquiry');
+$router->post('/coding-lessons/book',    'HomeController@codingLessonsBook');
 
 $router->get("/portfolio",                "PortfolioController@portfolio");
 $router->get('/search',                   'SearchController@search');

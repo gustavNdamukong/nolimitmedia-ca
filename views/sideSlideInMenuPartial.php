@@ -40,6 +40,8 @@ class sideSlideInMenuPartial extends \Dorguzen\Core\DGZ_HtmlView
             <ul class="nav navbar-nav navbar-right list-group">
 
                 <a title="" href="<?=$this->rootPath()?>home" class="list-group-item list-group-item-action"><i class="fa fa-home fa-fw me-2"></i> <?=$langClass->translate($lang, 'menu.php', 'menu-home')?></a>
+                <a href="<?=$this->rootPath()?>services" class="list-group-item list-group-item-action"><i class="fa fa-cogs fa-fw me-2"></i> Services</a>
+                <a href="<?=$this->rootPath()?>coding-lessons" class="list-group-item list-group-item-action" style="padding-left:2.25rem;"><i class="fa fa-graduation-cap fa-fw me-2"></i> Coding Lessons</a>
                 <a href="<?=$this->rootPath()?>news" class="list-group-item list-group-item-action"><i class="fa fa-newspaper-o fa-fw me-2"></i> News</a>
                 <a href="<?=$this->rootPath()?>portfolio" class="list-group-item list-group-item-action"><i class="fa fa-briefcase fa-fw me-2"></i> Portfolio</a>
                 <?php if (config('app.modules.gallery') === 'on'): ?>
@@ -74,7 +76,6 @@ class sideSlideInMenuPartial extends \Dorguzen\Core\DGZ_HtmlView
                 } ?>
             </ul>
         </div>
-        
     <?php
     }
 }

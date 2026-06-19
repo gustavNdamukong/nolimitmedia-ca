@@ -68,6 +68,26 @@ img { max-width: 100%; height: auto; }
     margin-bottom: .75rem;
 }
 .nlm-label.red { color: var(--nlm-red); }
+.nlm-label-lg {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+.nlm-sceptre-line {
+    display: block;
+    width: 110px;
+    height: 12px;
+    margin-top: 7px;
+    background:
+        radial-gradient(circle at 6px 50%, currentColor 5px, transparent 5.5px),
+        radial-gradient(circle at calc(100% - 6px) 50%, currentColor 5px, transparent 5.5px),
+        linear-gradient(currentColor, currentColor) 11px 50% / calc(100% - 22px) 3px no-repeat;
+    background-repeat: no-repeat;
+}
 
 .nlm-heading {
     font-size: clamp(2rem, 4vw, 3rem);
@@ -201,15 +221,15 @@ img { max-width: 100%; height: auto; }
 
 .nlm-nav-cta {
     margin-left: .75rem;
-    padding: .55rem 1.4rem;
+    padding: .38rem 1rem;
     background: var(--nlm-red);
     color: var(--nlm-white) !important;
-    font-weight: 700;
-    font-size: .9rem;
+    font-weight: 600;
+    font-size: .8rem;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    gap: .45rem;
+    gap: .35rem;
     transition: all var(--nlm-transition);
 }
 .nlm-nav-cta:hover {
@@ -328,10 +348,11 @@ img { max-width: 100%; height: auto; }
 .nlm-mobile-link:hover { color: var(--nlm-blue); background: rgba(23,195,245,.08); }
 .nlm-mobile-cta {
     margin-top: 1rem;
-    padding: .8rem 1rem;
+    padding: .55rem 1rem;
     background: var(--nlm-red);
     color: var(--nlm-white) !important;
-    font-weight: 700;
+    font-weight: 600;
+    font-size: .85rem;
     border-radius: 50px;
     text-align: center;
     transition: all var(--nlm-transition);
@@ -513,7 +534,8 @@ img { max-width: 100%; height: auto; }
     font-weight: 700;
     margin-bottom: .6rem;
 }
-.nlm-service-desc { font-size: .9rem; color: var(--nlm-text-muted); line-height: 1.7; }
+.nlm-service-desc { font-size: .9rem; color: var(--nlm-text); line-height: 1.7; }
+.nlm-service-title { color: var(--nlm-white); }
 
 /* ── Portfolio Grid ─────────────────────────────────────────── */
 .nlm-portfolio { background: var(--nlm-dark); }
@@ -1105,6 +1127,14 @@ p { color: var(--nlm-text); }
 @media (max-width: 991px) {
     .nlm-nav { display: none; }
     .nlm-hamburger { display: flex; }
+}
+
+@media (min-width: 993px) and (max-width: 1158px) {
+    .nlm-nav-cta {
+        padding: .28rem .7rem;
+        font-size: .73rem;
+        gap: .25rem;
+    }
 }
 
 @media (max-width: 768px) {

@@ -40,12 +40,13 @@
                 <div class="col-lg-3 col-md-6">
                     <h6 class="nlm-footer-heading">Services</h6>
                     <ul class="nlm-footer-links">
-                        <li><a href="#">Web Design &amp; Development</a></li>
-                        <li><a href="#">SEO &amp; Digital Marketing</a></li>
-                        <li><a href="#">Branding &amp; Identity</a></li>
-                        <li><a href="#">Social Media Management</a></li>
-                        <li><a href="#">E-commerce Solutions</a></li>
-                        <li><a href="#">Mobile App Development</a></li>
+                        <li><a href="<?= $this->config->getFileRootPath() ?>services">Web Design &amp; Development</a></li>
+                        <li><a href="<?= $this->config->getFileRootPath() ?>services">SEO &amp; Digital Marketing</a></li>
+                        <li><a href="<?= $this->config->getFileRootPath() ?>services">Branding &amp; Identity</a></li>
+                        <li><a href="<?= $this->config->getFileRootPath() ?>services">Social Media Management</a></li>
+                        <li><a href="<?= $this->config->getFileRootPath() ?>services">E-commerce Solutions</a></li>
+                        <li><a href="<?= $this->config->getFileRootPath() ?>services">Mobile App Development</a></li>
+                        <li><a href="<?= $this->config->getFileRootPath() ?>coding-lessons"><i class="fas fa-graduation-cap" style="font-size:.75rem; margin-right:.3rem; color:var(--nlm-blue);"></i> Coding Lessons</a></li>
                     </ul>
                 </div>
 
