@@ -10,10 +10,10 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
         // $testimonials (optional) — injected when testimonials module is on
         $base = $this->controller->config->getFileRootPath();
         $this->addMetadata([
-            '<title>No Limit Media — Digital Agency Canada</title>',
-            '<meta name="description" content="No Limit Media is a Canadian digital agency specialising in web design, web development, SEO, branding, and social media management. We build digital experiences that deliver results.">',
-            '<meta property="og:title" content="No Limit Media — Digital Agency Canada">',
-            '<meta property="og:description" content="Bold design. Clean code. Real growth. No Limit Media builds digital experiences that deliver results.">',
+            '<title>Nolimit Media — Digital Agency Canada</title>',
+            '<meta name="description" content="Nolimit Media is a Canadian digital agency specialising in web design, web development, mobile app development, SEO, branding, and social media management. We build digital experiences that deliver results.">',
+            '<meta property="og:title" content="Nolimit Media — Digital Agency Canada">',
+            '<meta property="og:description" content="Bold design. Clean code. Real growth. Nolimit Media builds digital experiences that deliver results.">',
             '<meta property="og:type" content="website">',
         ]);
     ?>
@@ -33,7 +33,7 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
                 </h1>
 
                 <p class="nlm-hero-sub">
-                    Your vision, our expertise. No Limit Media creates stunning websites,
+                    Your vision, our expertise. Nolimit Media creates stunning websites,
                     powerful digital marketing strategies, and unforgettable brands for
                     businesses across Canada and beyond.
                 </p>
@@ -49,11 +49,11 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
 
                 <div class="nlm-hero-stats">
                     <div>
-                        <div class="nlm-hero-stat-num">10+</div>
+                        <div class="nlm-hero-stat-num">8+</div>
                         <div class="nlm-hero-stat-label">Years of Experience</div>
                     </div>
                     <div>
-                        <div class="nlm-hero-stat-num">200+</div>
+                        <div class="nlm-hero-stat-num">100+</div>
                         <div class="nlm-hero-stat-label">Projects Delivered</div>
                     </div>
                     <div>
@@ -127,6 +127,7 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
     </section>
 
     <!-- ══ PORTFOLIO PREVIEW ══════════════════════════════════════ -->
+    <?php if (!empty($portfolioItems)): ?>
     <section class="nlm-section nlm-portfolio">
         <div class="container">
             <div class="text-center mb-5">
@@ -136,33 +137,50 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
             </div>
 
             <div class="row g-4">
+                <?php foreach ($portfolioItems as $pfItem):
+                    $pfTitle   = htmlspecialchars($pfItem['portfolio_title']        ?? '');
+                    $pfCompany = htmlspecialchars($pfItem['portfolio_company_name'] ?? '');
+                    $pfWebsite = htmlspecialchars($pfItem['portfolio_website']      ?? '');
+                    $pfDesc    = htmlspecialchars($pfItem['portfolio_description']  ?? '');
+                    $pfImgFull  = '';
+                    $pfImgThumb = '';
+                    if (!empty($pfItem['portfolio_image'])) {
+                        $pfImgPath  = $pfItem['portfolio_image'];
+                        $pfImgFull  = $base . htmlspecialchars($pfImgPath);
+                        $pfThumbRel = dirname($pfImgPath) . '/'
+                            . pathinfo(basename($pfImgPath), PATHINFO_FILENAME) . '_thb.'
+                            . pathinfo($pfImgPath, PATHINFO_EXTENSION);
+                        $pfImgThumb = file_exists(base_path($pfThumbRel))
+                            ? $base . htmlspecialchars($pfThumbRel)
+                            : $pfImgFull;
+                    }
+                ?>
                 <div class="col-lg-4 col-md-6">
-                    <div class="nlm-portfolio-card">
-                        <img src="<?= $base ?>assets/images/portfolio-1.jpg" alt="Project 1">
+                    <div class="nlm-portfolio-card"
+                         style="cursor:pointer;"
+                         data-bs-toggle="modal"
+                         data-bs-target="#homePortfolioModal"
+                         data-title="<?= $pfTitle ?>"
+                         data-company="<?= $pfCompany ?>"
+                         data-website="<?= $pfWebsite ?>"
+                         data-desc="<?= $pfDesc ?>"
+                         data-img="<?= $pfImgFull ?>">
+                        <?php if ($pfImgThumb): ?>
+                            <img src="<?= $pfImgThumb ?>" alt="<?= $pfTitle ?>">
+                        <?php else: ?>
+                            <div style="height:100%; min-height:220px; background:linear-gradient(135deg, var(--nlm-blue, #1565C0) 0%, #0d47a1 100%); display:flex; align-items:center; justify-content:center;">
+                                <i class="fas fa-briefcase" style="color:rgba(255,255,255,.3); font-size:3rem;"></i>
+                            </div>
+                        <?php endif; ?>
                         <div class="nlm-portfolio-overlay">
-                            <div class="nlm-portfolio-tag">Web Design &amp; Development</div>
-                            <div class="nlm-portfolio-name">Corporate Rebrand &amp; Website</div>
+                            <?php if ($pfCompany): ?>
+                            <div class="nlm-portfolio-tag"><?= $pfCompany ?></div>
+                            <?php endif; ?>
+                            <div class="nlm-portfolio-name"><?= $pfTitle ?></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="nlm-portfolio-card">
-                        <img src="<?= $base ?>assets/images/portfolio-2.jpg" alt="Project 2">
-                        <div class="nlm-portfolio-overlay">
-                            <div class="nlm-portfolio-tag">E-commerce</div>
-                            <div class="nlm-portfolio-name">Online Store — Fashion Brand</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="nlm-portfolio-card">
-                        <img src="<?= $base ?>assets/images/portfolio-3.jpg" alt="Project 3">
-                        <div class="nlm-portfolio-overlay">
-                            <div class="nlm-portfolio-tag">SEO &amp; Marketing</div>
-                            <div class="nlm-portfolio-name">Lead Generation Campaign</div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
             <div class="text-center mt-5">
@@ -171,7 +189,81 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
                 </a>
             </div>
         </div>
+
+        <!-- Portfolio Modal -->
+        <div class="modal fade" id="homePortfolioModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0 shadow-lg" style="border-radius:14px; overflow:hidden;">
+                    <div class="modal-header border-0 text-white py-3 px-4"
+                         style="background:var(--nlm-blue, #1565C0);">
+                        <h5 class="modal-title fw-bold" id="hpf-modal-title"></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div id="hpf-modal-img-wrap" style="display:none;">
+                            <img id="hpf-modal-img" src="" alt="" style="width:100%; height:auto; display:block;">
+                        </div>
+                        <div class="p-4">
+                            <div id="hpf-modal-company" class="text-muted mb-2" style="display:none;">
+                                <i class="fas fa-building me-1"></i>
+                                <span id="hpf-modal-company-text"></span>
+                            </div>
+                            <div id="hpf-modal-website-wrap" class="mb-3" style="display:none;">
+                                <i class="fas fa-globe me-1"></i>
+                                <a id="hpf-modal-website" href="#" target="_blank" rel="noopener"
+                                   style="color:var(--nlm-blue, #1565C0); word-break:break-all;"></a>
+                            </div>
+                            <p id="hpf-modal-desc" class="text-secondary" style="white-space:pre-line; line-height:1.75;"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 px-4 pb-4 pt-0">
+                        <a id="hpf-modal-portfolio-link" href="<?= $base ?>portfolio" class="btn btn-sm nlm-btn nlm-btn-outline">See All Projects</a>
+                        <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        (function () {
+            var modal = document.getElementById('homePortfolioModal');
+            if (!modal) return;
+            modal.addEventListener('show.bs.modal', function (e) {
+                var card = e.relatedTarget;
+                document.getElementById('hpf-modal-title').textContent = card.dataset.title || '';
+                document.getElementById('hpf-modal-desc').textContent  = card.dataset.desc  || '';
+
+                var imgWrap = document.getElementById('hpf-modal-img-wrap');
+                var img     = document.getElementById('hpf-modal-img');
+                if (card.dataset.img) {
+                    img.src = card.dataset.img;
+                    img.alt = card.dataset.title || '';
+                    imgWrap.style.display = '';
+                } else {
+                    imgWrap.style.display = 'none';
+                }
+
+                var companyWrap = document.getElementById('hpf-modal-company');
+                if (card.dataset.company) {
+                    document.getElementById('hpf-modal-company-text').textContent = card.dataset.company;
+                    companyWrap.style.display = '';
+                } else {
+                    companyWrap.style.display = 'none';
+                }
+
+                var websiteWrap = document.getElementById('hpf-modal-website-wrap');
+                var websiteLink = document.getElementById('hpf-modal-website');
+                if (card.dataset.website) {
+                    websiteLink.href        = card.dataset.website;
+                    websiteLink.textContent = card.dataset.website;
+                    websiteWrap.style.display = '';
+                } else {
+                    websiteWrap.style.display = 'none';
+                }
+            });
+        })();
+        </script>
     </section>
+    <?php endif; ?>
 
     <!-- ══ WHY US ═════════════════════════════════════════════════ -->
     <section class="nlm-section nlm-why">
@@ -217,13 +309,13 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
                     <div class="row g-4">
                         <div class="col-6">
                             <div class="nlm-stat-card">
-                                <div class="nlm-stat-num">10+</div>
+                                <div class="nlm-stat-num">8+</div>
                                 <div class="nlm-stat-label">Years Experience</div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="nlm-stat-card">
-                                <div class="nlm-stat-num">200+</div>
+                                <div class="nlm-stat-num">100+</div>
                                 <div class="nlm-stat-label">Projects Delivered</div>
                             </div>
                         </div>
@@ -328,7 +420,7 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
                 <div class="col-lg-4 col-md-6">
                     <div class="nlm-testimonial-card">
                         <div class="nlm-testimonial-stars">★★★★★</div>
-                        <p class="nlm-testimonial-quote">"No Limit Media transformed our online presence completely. Our website traffic tripled in three months and the design is exactly what we envisioned — actually better."</p>
+                        <p class="nlm-testimonial-quote">"Nolimit Media transformed our online presence completely. Our website traffic tripled in three months and the design is exactly what we envisioned — actually better."</p>
                         <div class="nlm-testimonial-author">
                             <img src="<?= $base ?>assets/images/testimonial-1.jpg" alt="Client" class="nlm-testimonial-avatar">
                             <div>

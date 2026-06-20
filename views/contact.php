@@ -13,13 +13,14 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 
 	function show()
 	{
-		/*$this->addMetadata(
-			[
-				'<meta name="description" content="The DorguzApp (replace this with your application name) contact us page. Send us a quick message and we will get back 
-					to you as soon as possible.">',
-				'<meta name="keywords" content="DorguzApp (replace this with your application name) contact form, get quote, more information.">',
-				'<meta name="author" content="Your name here">'
-			]);*/
+		$this->addMetadata([
+			'<title>Contact Us — Nolimit Media | Get a Free Quote</title>',
+			'<meta name="description" content="Ready to start your project? Get in touch with the Nolimit Media team for a free consultation on web design, development, SEO, or any of our digital services.">',
+			'<meta name="keywords" content="contact Nolimit Media, free quote web design Canada, digital agency consultation, hire web developer Canada">',
+			'<meta property="og:title" content="Contact Us — Nolimit Media">',
+			'<meta property="og:description" content="Send us a message and a member of our team will be in touch shortly to discuss your digital needs.">',
+			'<meta property="og:type" content="website">',
+		]);
 		?>
 
 		<!-- ==========================

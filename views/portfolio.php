@@ -8,6 +8,14 @@ class portfolio extends \Dorguzen\Core\DGZ_HtmlView
     {
         $items = $viewModel['portfolioItems'] ?? [];
         $base  = $this->controller->config->getFileRootPath();
+        $this->addMetadata([
+            '<title>Portfolio — Nolimit Media | Our Work & Case Studies</title>',
+            '<meta name="description" content="Browse Nolimit Media\'s portfolio of web design, development, and digital marketing projects. Real work, real results for Canadian businesses and beyond.">',
+            '<meta name="keywords" content="Nolimit Media portfolio, web design examples Canada, development case studies, digital marketing results">',
+            '<meta property="og:title" content="Portfolio — Nolimit Media | Our Work">',
+            '<meta property="og:description" content="See the websites, apps, and campaigns we\'ve built for clients across Canada and beyond.">',
+            '<meta property="og:type" content="website">',
+        ]);
         ?>
 
         <!-- Hero Header Start -->

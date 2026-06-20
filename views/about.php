@@ -8,9 +8,11 @@ class about extends \Dorguzen\Core\DGZ_HtmlView
     {
         $base = $this->controller->config->getFileRootPath();
         $this->addMetadata([
-            '<title>About Us — No Limit Media | Canadian Digital Agency</title>',
-            '<meta name="description" content="Learn who we are, what drives us, and why businesses across Canada trust No Limit Media for web design, development, and digital marketing.">',
-            '<meta property="og:title" content="About No Limit Media — Canadian Digital Agency">',
+            '<title>About Us — Nolimit Media | Canadian Digital Agency</title>',
+            '<meta name="description" content="Learn who we are, what drives us, and why businesses across Canada trust Nolimit Media for web design, development, and digital marketing.">',
+            '<meta name="keywords" content="about Nolimit Media, Canadian digital agency team, web design company Canada, who we are">',
+            '<meta property="og:title" content="About Nolimit Media — Canadian Digital Agency">',
+            '<meta property="og:description" content="Learn who we are, what drives us, and why businesses across Canada trust Nolimit Media for web design, development, and digital marketing.">',
             '<meta property="og:type" content="website">',
         ]);
     ?>
@@ -19,7 +21,7 @@ class about extends \Dorguzen\Core\DGZ_HtmlView
     <section class="nlm-page-hero" style="padding-top: calc(var(--nlm-header-h) + 50px);">
         <div class="nlm-page-hero-content container">
             <span class="nlm-label" style="color:rgba(255,255,255,.7);">Who We Are</span>
-            <h1>About No Limit Media</h1>
+            <h1>About Nolimit Media</h1>
             <p>A passionate team of designers, developers, and strategists building digital experiences that matter.</p>
             <div class="nlm-breadcrumb">
                 <a href="<?= $base ?>">Home</a>
@@ -37,7 +39,7 @@ class about extends \Dorguzen\Core\DGZ_HtmlView
                     <span class="nlm-label">Our Story</span>
                     <h2 class="nlm-heading">Built on Passion,<br><span class="nlm-gradient-text">Driven by Results</span></h2>
                     <p style="color:var(--nlm-text-muted); margin-bottom:1.25rem;">
-                        No Limit Media was founded with a single purpose: to give businesses of every size access to world-class digital expertise. What started as a small web design studio has grown into a full-service digital agency serving clients across Canada and internationally.
+                        Nolimit Media was founded with a single purpose: to give businesses of every size access to world-class digital expertise. What started as a small web design studio has grown into a full-service digital agency serving clients across Canada and internationally.
                     </p>
                     <p style="color:var(--nlm-text-muted); margin-bottom:1.75rem;">
                         We believe great digital work starts with genuinely understanding our clients — their goals, their audience, and the problems they need solved. That philosophy guides every project we take on, from a single landing page to a complex e-commerce platform.
@@ -50,7 +52,7 @@ class about extends \Dorguzen\Core\DGZ_HtmlView
                     <div class="row g-3">
                         <div class="col-6">
                             <div class="nlm-stat-card">
-                                <div class="nlm-stat-num">10+</div>
+                                <div class="nlm-stat-num">8+</div>
                                 <div class="nlm-stat-label">Years of Experience</div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@
  *
  * Variables (injected via extract()):
  *   string $name          Visitor's name
- *   string $appBusinessName  e.g. "No Limit Media"
+ *   string $appBusinessName  e.g. "Nolimit Media"
  *   string $accentColour  Site accent colour
  */
 $firstName = explode(' ', trim($name))[0];

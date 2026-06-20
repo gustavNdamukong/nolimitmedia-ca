@@ -8,9 +8,9 @@ class codingLessons extends \Dorguzen\Core\DGZ_HtmlView
     {
         $base = $this->controller->config->getFileRootPath();
         $this->addMetadata([
-            '<title>Coding Lessons — No Limit Media | Learn to Code in Canada</title>',
+            '<title>Coding Lessons — Nolimit Media | Learn to Code in Canada</title>',
             '<meta name="description" content="One-on-one and small group coding lessons for young people and students. Learn HTML, CSS, JavaScript, and more — online, flexible, and tailored to your level.">',
-            '<meta property="og:title" content="Coding Lessons — No Limit Media">',
+            '<meta property="og:title" content="Coding Lessons — Nolimit Media">',
             '<meta property="og:type" content="website">',
         ]);
     ?>

@@ -8,9 +8,11 @@ class services extends \Dorguzen\Core\DGZ_HtmlView
     {
         $base = $this->controller->config->getFileRootPath();
         $this->addMetadata([
-            '<title>Services — No Limit Media | Canadian Digital Agency</title>',
-            '<meta name="description" content="From branding and web development to AI consulting, SEO, mobile apps, and coding lessons — No Limit Media covers every layer of your digital presence.">',
-            '<meta property="og:title" content="Services — No Limit Media">',
+            '<title>Services — Nolimit Media | Canadian Digital Agency</title>',
+            '<meta name="description" content="From branding and web development to AI consulting, SEO, mobile apps, and coding lessons — Nolimit Media covers every layer of your digital presence.">',
+            '<meta name="keywords" content="web design Canada, web development, SEO services, branding, mobile apps, AI consulting, coding lessons, digital agency Canada">',
+            '<meta property="og:title" content="Services — Nolimit Media">',
+            '<meta property="og:description" content="From branding and web development to AI consulting, SEO, mobile apps, and coding lessons — Nolimit Media covers every layer of your digital presence.">',
             '<meta property="og:type" content="website">',
         ]);
     ?>

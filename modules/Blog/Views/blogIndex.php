@@ -10,6 +10,14 @@ class blogIndex extends \Dorguzen\Core\DGZ_HtmlView
         // $posts, $categories, $recentPosts, $currentPage, $totalPages, $total, $categoryId, $search
         $rootPath  = $this->controller->config->getFileRootPath();
         $themeColor = 'var(--site-theme, #1565C0)';
+        $this->addMetadata([
+            '<title>Blog — Nolimit Media | Insights & Stories</title>',
+            '<meta name="description" content="Read the latest insights, tips, and stories from the Nolimit Media team on web design, development, digital marketing, and tech.">',
+            '<meta name="keywords" content="Nolimit Media blog, web design tips Canada, development blog, digital marketing insights, tech blog">',
+            '<meta property="og:title" content="Blog — Nolimit Media">',
+            '<meta property="og:description" content="Insights, tips, and stories from the Nolimit Media team on design, development, and digital growth.">',
+            '<meta property="og:type" content="website">',
+        ]);
         ?>
 
         <!-- Hero -->

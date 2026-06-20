@@ -7,6 +7,14 @@ class news extends \Dorguzen\Core\DGZ_HtmlView
     public function show(array $viewModel = []): void
     {
         extract($viewModel); // $newsItems, $latestNews, $totalCount
+        $this->addMetadata([
+            '<title>News & Updates — Nolimit Media | Canadian Digital Agency</title>',
+            '<meta name="description" content="Stay up to date with the latest news, insights, and updates from Nolimit Media — Canada\'s digital agency for web design, development, and digital marketing.">',
+            '<meta name="keywords" content="Nolimit Media news, digital agency updates Canada, web design blog, tech news Canada">',
+            '<meta property="og:title" content="News & Updates — Nolimit Media">',
+            '<meta property="og:description" content="The latest insights, articles, and updates from the Nolimit Media team.">',
+            '<meta property="og:type" content="website">',
+        ]);
         ?>
 
         <!-- Hero Header Start -->

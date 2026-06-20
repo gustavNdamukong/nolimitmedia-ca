@@ -9,6 +9,7 @@ use Dorguzen\Core\DGZ_Messenger;
 use Dorguzen\Modules\Testimonials\Services\TestimonialsService;
 use Dorguzen\Services\FeedbackService;
 use Dorguzen\Services\CodingLessonsService;
+use Dorguzen\Services\PortfolioService;
 
 class HomeController extends DGZ_Controller
 {
@@ -164,6 +165,10 @@ class HomeController extends DGZ_Controller
             $service = container(TestimonialsService::class);
             $viewModel['testimonials'] = $service->homePagePayload(3)['testimonials'];
         }
+
+        $portfolioService = container(PortfolioService::class);
+        $allItems = $portfolioService->portfolioPayload()['portfolioItems'];
+        $viewModel['portfolioItems'] = array_slice($allItems, 0, 3);
 
         $view = DGZ_View::getView('home', $this, 'html');
         $this->setLayoutDirectory($this->config->getConfig()['layoutDirectory']);

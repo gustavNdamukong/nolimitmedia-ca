@@ -3,7 +3,7 @@
 
         <!-- Logo -->
         <a href="<?= $this->config->getFileRootPath() ?>" class="nlm-logo">
-            <img src="<?= $this->config->getFileRootPath() ?>assets/images/logo2.png" alt="No Limit Media" height="38">
+            <img src="<?= $this->config->getFileRootPath() ?>assets/images/logo2.png" alt="Nolimit Media" height="38">
         </a>
 
         <!-- Desktop nav -->

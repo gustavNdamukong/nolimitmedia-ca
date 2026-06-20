@@ -6,7 +6,7 @@
                 <!-- Brand col -->
                 <div class="col-lg-4 col-md-6">
                     <a href="<?= $this->config->getFileRootPath() ?>" class="nlm-footer-logo">
-                        <img src="<?= $this->config->getFileRootPath() ?>assets/images/logo1.png" alt="No Limit Media" height="36">
+                        <img src="<?= $this->config->getFileRootPath() ?>assets/images/logo1.png" alt="Nolimit Media" height="36">
                     </a>
                     <p class="nlm-footer-tagline">We build digital experiences that deliver results. Bold design. Clean code. Real growth.</p>
                     <div class="nlm-footer-social">

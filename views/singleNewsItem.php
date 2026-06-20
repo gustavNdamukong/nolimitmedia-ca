@@ -19,8 +19,20 @@ class singleNewsItem extends \Dorguzen\Core\DGZ_HtmlView
 
         // Embed URL is stored clean by the controller on save — use directly
         $videoEmbedUrl = trim($newsItem['news_video_url'] ?? '');
+        $audioUrl      = trim($newsItem['news_audio_url'] ?? '');
 
-        $audioUrl = trim($newsItem['news_audio_url'] ?? '');
+        $metaDesc = mb_substr(strip_tags($newsItem['news_description'] ?? ''), 0, 150);
+        $metaTags = [
+            '<title>' . $title . ' — Nolimit Media</title>',
+            '<meta name="description" content="' . htmlspecialchars($metaDesc) . '">',
+            '<meta property="og:title" content="' . htmlspecialchars($title) . '">',
+            '<meta property="og:description" content="' . htmlspecialchars($metaDesc) . '">',
+            '<meta property="og:type" content="article">',
+        ];
+        if ($imgSrc) {
+            $metaTags[] = '<meta property="og:image" content="' . htmlspecialchars($imgSrc) . '">';
+        }
+        $this->addMetadata($metaTags);
         ?>
 
         <!-- Hero Header Start -->

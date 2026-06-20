@@ -15,7 +15,21 @@ class blogPost extends \Dorguzen\Core\DGZ_HtmlView
             ? date('F j, Y', strtotime($post['published_at']))
             : date('F j, Y', strtotime($post['created_at']));
 
-        $hasCover = !empty($post['cover_image']);
+        $hasCover  = !empty($post['cover_image']);
+
+        $metaTitle = htmlspecialchars($post['title'] ?? 'Blog Post');
+        $metaDesc  = mb_substr(strip_tags($post['body'] ?? ''), 0, 150);
+        $metaTags  = [
+            '<title>' . $metaTitle . ' — Nolimit Media Blog</title>',
+            '<meta name="description" content="' . htmlspecialchars($metaDesc) . '">',
+            '<meta property="og:title" content="' . htmlspecialchars($metaTitle) . '">',
+            '<meta property="og:description" content="' . htmlspecialchars($metaDesc) . '">',
+            '<meta property="og:type" content="article">',
+        ];
+        if ($hasCover) {
+            $metaTags[] = '<meta property="og:image" content="' . $rootPath . 'assets/images/blog/' . htmlspecialchars($post['cover_image']) . '">';
+        }
+        $this->addMetadata($metaTags);
         ?>
 
         <!-- Hero / cover -->
