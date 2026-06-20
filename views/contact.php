@@ -33,8 +33,7 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 					</div>
 					<div class="col-xs-6">
 						<ol class="breadcrumb">
-							<li><a href="<?=$this->controller->config->getFileRootPath()?>home/home"><i class="fa fa-home"></i>Home</a></li>
-							<li class="active">Contact us</li>
+							<a href="<?=$this->controller->config->getFileRootPath()?>"><i class="fa fa-home"></i> Home</a>&nbsp;| Contact Us
 						</ol>
 					</div>
 				</div>
@@ -67,9 +66,7 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
                     -------------------------------------->
 					<div class="col-md-12">
 						<div class="attachment">
-							<!--REPLACE THE MAP URL BELOW WITH YOUR OWN GOOGLE MAPS URL-->
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.0536078009377!2d-0.09573408401648491!3d51.530576579638975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b5f583930e5%3A0x5a7e590f7325e26f!2s20-22%20Wenlock%20Rd%2C%20Hoxton%2C%20London%20N1%207GU!5e0!3m2!1sen!2suk!4v1594140277944!5m2!1sen!2suk" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-							</iframe>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2872.1948941710457!2d-78.8945969880641!3d43.95533337096873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d51ba3a0b150b3%3A0x115ffe01fc47834d!2s2255%20Hackett%20Pl%2C%20Oshawa%2C%20ON%20L1L%200B3!5e0!3m2!1sen!2sca!4v1781984478534!5m2!1sen!2sca" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 						</div>
 					</div>
 					<!------------------------------------
@@ -83,8 +80,8 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 					<!------------------------------------
                     MAIN PAGE SECTION START
                     -------------------------------------->
-					<div class="col-sm-9" style="margin-top: 200px;">
-						<h2>Let us give you a quote!</h2>
+					<div class="col-sm-9" style="margin-top: 50px;">
+						<h2>Send us a quick message</h2>
 
 						<form action="<?=$this->controller->config->getFileRootPath()?>feedback/processContact" method="post">
 							<input type="hidden" name="_csrf_token" value="<?=getCsrfToken()?>">
@@ -97,7 +94,6 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 									<label class="label-control" for="email">Email</label>
 									<input type="email" id="email" name="email" class="form-control" required />
 								</div>
-								<!--</div>-->
 
 								<div class="col-md-6">
 									<label class="label-control" for="subject">Phone number</label>
@@ -125,29 +121,35 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 					<!------------------------------------
                     START OF SIDEBAR
                     -------------------------------------->
-					<div class="col-sm-3">
+					<div class="col-sm-3 mt-4 mt-sm-0">
 						<aside class="sidebar right">
 
-							<!-- WIDGET: LATEST NEWS - START -->
-							<div class="widget widget-post-categories">
-								<h3 style="color: #FFF; font-weight: bold;" class="text-center">Contact Info</h3>
-								<p>Phone: +17111222333</p>
-								<p><strong><a href="mailto:dorguzen@dorguzen.com">Send us an email</a></strong></p>
-
-
-
-
-
-
-								<hr />
+							<!-- WIDGET: CONTACT INFO - START -->
+							<div class="card border-0 shadow-sm mb-4" style="border-radius:12px; overflow:hidden;">
+								<div class="card-header text-white fw-bold" style="background:var(--site-theme, #1565C0);">
+									Contact Info
+								</div>
+								<div class="card-body">
+									<p class="mb-2">
+										<i class="fas fa-phone me-2"></i>
+										<strong>Phone:</strong>
+										<?php $tel = config('app.site_contact_tel'); echo htmlspecialchars(!empty($tel) ? $tel : 'site-contact-number-here'); ?>
+									</p>
+									<p class="mb-0">
+										<i class="fas fa-envelope me-2"></i>
+										<a href="mailto:<?= htmlspecialchars(config('app.appEmail')) ?>">Send us an email</a>
+									</p>
+								</div>
 							</div>
-							<!-- WIDGET: LATEST NEWS - END -->
+							<!-- WIDGET: CONTACT INFO - END -->
 
 
 							<!-- WIDGET: FACEBOOK NEWS - START -->
-							<div>
-								<h3>Facebook</h3>
-								<div class="widget widget-facebook-news">
+							<div class="card border-0 shadow-sm mb-4" style="border-radius:12px; overflow:hidden;">
+								<div class="card-header text-white fw-bold" style="background:var(--site-theme, #1565C0);">
+									Facebook
+								</div>
+								<div class="widget widget-facebook-news card-body">
 									<div class="fb-page" data-height="800" data-href="https://www.facebook.com/yourAppName" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
 										<blockquote cite="https://www.facebook.com/yourAppName/yourCity" class="fb-xfbml-parse-ignore">
 											<a href="https://www.facebook.com/yourAppName">Facebook</a>
@@ -160,8 +162,10 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 
 
 							<!-- WIDGET: FACEBOOK NEWS - START -->
-							<div>
-								<h3>Twitter</h3>
+							<div class="card border-0 shadow-sm mb-4" style="border-radius:12px; overflow:hidden;">
+								<div class="card-header text-white fw-bold" style="background:var(--site-theme, #1565C0);">
+									Twitter
+								</div>
 								<div class="widget" id="twitter-news">
 									<a class="twitter-timeline" data-width="265" data-height="800" href="https://twitter.com/yourAppName">Tweets by yourAppName</a>
 									<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>

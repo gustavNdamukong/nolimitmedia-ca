@@ -58,8 +58,15 @@ class HomeController extends DGZ_Controller
 
         $messenger = new DGZ_Messenger();
         $messenger->sendContactFormMsgToAdmin($name, $email, $phone, '[Coding Lessons Enquiry] ' . $message);
+        $messenger->sendEmail(
+            toEmail:  $email,
+            toName:   $name,
+            subject:  'Thank you for your interest — ' . $this->config->getConfig()['appBusinessName'],
+            data:     ['heading' => 'We\'ll Be In Touch!', 'name' => $name],
+            template: 'coding-visitor-confirmation',
+        );
 
-        echo json_encode(['success' => true, 'message' => 'Your enquiry has been received. We\'ll be in touch very soon!']);
+        echo json_encode(['success' => true, 'message' => 'Thank you. Your enquiry has been received. We\'ll be in touch very soon!']);
         exit;
     }
 
@@ -99,7 +106,34 @@ class HomeController extends DGZ_Controller
             'frequency'  => $frequency,
         ]);
 
-        echo json_encode(['success' => true, 'message' => 'Your session request has been received! We\'ll be in touch shortly to confirm your start date and first session details.']);
+        $messenger = new DGZ_Messenger();
+        $messenger->sendEmail(
+            toEmail:     $this->config->getConfig()['appEmail'],
+            toName:      'Admin',
+            subject:     'New coding lesson session request from ' . $name,
+            replyTo:     $email,
+            replyToName: $name,
+            data:        [
+                'heading'   => 'New Coding Lesson Booking',
+                'name'      => $name,
+                'email'     => $email,
+                'phone'     => $phone,
+                'ageGroup'  => $ageGroup,
+                'startDate' => $startDate,
+                'frequency' => $frequency,
+                'language'  => $language,
+            ],
+            template: 'coding-booking',
+        );
+        $messenger->sendEmail(
+            toEmail:  $email,
+            toName:   $name,
+            subject:  'Thank you for your interest — ' . $this->config->getConfig()['appBusinessName'],
+            data:     ['heading' => 'We\'ll Be In Touch!', 'name' => $name],
+            template: 'coding-visitor-confirmation',
+        );
+
+        echo json_encode(['success' => true, 'message' => 'Thank you. Your session request has been received! We\'ll be in touch shortly to confirm your start date and first session details.']);
         exit;
     }
 

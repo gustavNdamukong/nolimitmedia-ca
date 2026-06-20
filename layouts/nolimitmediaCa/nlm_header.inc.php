@@ -52,9 +52,23 @@
             </div>
 
             <a href="<?= $this->config->getFileRootPath() ?>about" class="nlm-nav-link">About</a>
-            <?php if (config('app.modules.testimonials') === 'on'): ?>
-            <a href="<?= $this->config->getFileRootPath() ?>testimonials" class="nlm-nav-link">Review</a>
-            <?php endif; ?>
+
+            <!-- Contact dropdown -->
+            <div class="nlm-dropdown">
+                <button class="nlm-nav-link nlm-dropdown-toggle" aria-expanded="false">
+                    Contact <i class="fas fa-chevron-down" style="font-size:.7rem; margin-left:4px;"></i>
+                </button>
+                <div class="nlm-dropdown-menu">
+                    <?php if (config('app.modules.testimonials') === 'on'): ?>
+                    <a href="<?= $this->config->getFileRootPath() ?>testimonials" class="nlm-dropdown-item">
+                        <i class="fas fa-star"></i> Review
+                    </a>
+                    <?php endif; ?>
+                    <a href="<?= $this->config->getFileRootPath() ?>feedback" class="nlm-dropdown-item">
+                        <i class="fas fa-envelope"></i> Contact Us
+                    </a>
+                </div>
+            </div>
             <a href="<?= $this->config->getFileRootPath() ?>auth/login" class="nlm-nav-link nlm-nav-login" title="Client Login">
                 <i class="fas fa-user-circle"></i>
             </a>
@@ -108,6 +122,7 @@
             <i class="fas fa-star"></i> Review
         </a>
         <?php endif; ?>
+        <a href="<?= $this->config->getFileRootPath() ?>feedback" class="nlm-mobile-link"><i class="fas fa-envelope"></i> Contact Us</a>
         <a href="<?= $this->config->getFileRootPath() ?>auth/login" class="nlm-mobile-link"><i class="fas fa-user-circle"></i> Client Login</a>
         <a href="<?= $this->config->getFileRootPath() ?>feedback" class="nlm-mobile-cta">Get In Touch</a>
     </div>

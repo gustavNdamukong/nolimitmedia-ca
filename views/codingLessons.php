@@ -450,7 +450,7 @@ class codingLessons extends \Dorguzen\Core\DGZ_HtmlView
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold" style="font-size:.88rem; color:#333;">Full Name <span style="color:var(--nlm-red);">*</span></label>
-                                <input type="text" name="name" class="form-control" placeholder="Your name" required>
+                                <input type="text" id="clName" name="name" class="form-control" placeholder="Your name" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold" style="font-size:.88rem; color:#333;">Email Address <span style="color:var(--nlm-red);">*</span></label>
@@ -569,6 +569,7 @@ class codingLessons extends \Dorguzen\Core\DGZ_HtmlView
             const url    = reason === 'inquiry'
                 ? base + 'coding-lessons/inquiry'
                 : base + 'coding-lessons/book';
+            const visitorName = (document.getElementById('clName').value.trim().split(' ')[0]) || '';
 
             btn.disabled       = true;
             icon.className     = 'fas fa-spinner fa-spin';
@@ -579,10 +580,17 @@ class codingLessons extends \Dorguzen\Core\DGZ_HtmlView
                 const data = await res.json();
 
                 formMsg.style.display = '';
-                formMsg.className     = data.success
-                    ? 'alert alert-success'
-                    : 'alert alert-danger';
-                formMsg.textContent = data.message;
+
+                if (data.success) {
+                    formMsg.className = 'alert';
+                    formMsg.style.cssText = 'display:block; margin-top:1.25rem; background:#d4edda; border:1px solid #5a9b6a; color:#1a5c2a; font-weight:600;';
+                    const prefix = visitorName ? 'Thank you, ' + visitorName + '! ' : 'Thank you! ';
+                    formMsg.textContent = prefix + data.message.replace(/^Thank you[.,]?\s*/i, '');
+                } else {
+                    formMsg.className   = 'alert alert-danger';
+                    formMsg.style.cssText = '';
+                    formMsg.textContent = data.message;
+                }
 
                 if (data.success) {
                     form.reset();

@@ -56,7 +56,7 @@ class sideSlideInMenuPartial extends \Dorguzen\Core\DGZ_HtmlView
                 <?php if (config('app.modules.testimonials') === 'on'): ?>
                 <a href="<?=$this->rootPath()?>testimonials" class="list-group-item list-group-item-action"><i class="fa fa-star fa-fw me-2"></i> Review</a>
                 <?php endif; ?>
-                <a href="<?=$this->rootPath()?>feedback" class="list-group-item list-group-item-action"><i class="fa fa-envelope-o fa-fw me-2"></i> Contact</a>
+                <a href="<?=$this->rootPath()?>feedback" class="list-group-item list-group-item-action"><i class="fa fa-envelope-o fa-fw me-2"></i> Contact Us</a>
                 <?php
                 if (!isset($_SESSION['authenticated'])) { ?>
                     <a href="<?=$this->rootPath()?>auth/login" class="list-group-item list-group-item-action"><i class="fa fa-sign-in fa-fw me-2"></i> Login</a>
