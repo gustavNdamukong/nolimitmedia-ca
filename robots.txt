@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Block private/admin areas from all crawlers
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /user/
+Disallow: /exception/
+Disallow: /search
+Disallow: /unsubscribe
+Disallow: /ping
+Disallow: /echo
+Disallow: /me
+
+Sitemap: https://nolimitmedia.ca/sitemap.xml
