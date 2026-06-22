@@ -169,7 +169,7 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 								</div>
 								<div class="widget" id="twitter-news">
 									<a class="twitter-timeline" data-width="265" data-height="800" href="https://twitter.com/yourAppName">Tweets by yourAppName</a>
-									<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+									<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 								</div>
 							</div>
 							<!-- WIDGET: FACEBOOK NEWS - END -->
