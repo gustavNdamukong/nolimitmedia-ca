@@ -14,6 +14,9 @@ class nolimitmediaCaLayout extends \Dorguzen\Core\DGZ_Layout {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- Google Search Console domain-ownership verification -->
+        <meta name="google-site-verification" content="MO4gJT6IgIYJ8ErceXq2H3tMp06CeJN1y-xF5Xtz3PM">
+
         <?= ($this->getMetadata() != '') ? $this->getMetadata() : '<title>Nolimit Media — Digital Agency</title>' ?>
 
         <!-- Fonts -->
