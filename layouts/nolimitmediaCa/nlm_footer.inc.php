@@ -53,19 +53,28 @@
                 <!-- Contact -->
                 <div class="col-lg-3 col-md-6">
                     <h6 class="nlm-footer-heading">Contact</h6>
+                    <?php
+                    $nlmAddr  = trim((string) config('app.site_postal_address')) ?: 'Canada';
+                    $nlmEmail = trim((string) config('app.appEmail'));
+                    $nlmTel   = trim((string) config('app.site_contact_tel'));
+                    ?>
                     <ul class="nlm-footer-contact">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Canada</span>
+                            <span><?= htmlspecialchars($nlmAddr) ?></span>
                         </li>
+                        <?php if ($nlmEmail !== ''): ?>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:hello@nolimitmedia.ca">hello@nolimitmedia.ca</a>
+                            <a href="mailto:<?= htmlspecialchars($nlmEmail) ?>"><?= htmlspecialchars($nlmEmail) ?></a>
                         </li>
+                        <?php endif; ?>
+                        <?php if ($nlmTel !== ''): ?>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+1">+1 (000) 000-0000</a>
+                            <a href="tel:<?= htmlspecialchars(preg_replace('/[^0-9+]/', '', $nlmTel)) ?>"><?= htmlspecialchars($nlmTel) ?></a>
                         </li>
+                        <?php endif; ?>
                     </ul>
 
                     <!-- Newsletter -->
@@ -88,7 +97,7 @@
     <div class="nlm-footer-bottom">
         <div class="container">
             <p>&copy; <?= date('Y') ?> <span class="nlm-blue">No Limit</span><span class="nlm-red">Media</span>. All rights reserved.</p>
-            <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
+            <p><a href="<?= $this->config->getFileRootPath() ?>privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="<?= $this->config->getFileRootPath() ?>terms">Terms of Service</a></p>
         </div>
     </div>
 </footer>

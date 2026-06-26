@@ -7,7 +7,7 @@ return new class extends Migration {
 
     public function up(): void
     {
-        $sql = $this->schema->create('contactformmessage', function (Blueprint $table) {
+        $sql = $this->schema->create('contactFormMessage', function (Blueprint $table) {
             $table->id('contactformmessage_id');
 
             $table->string('contactformmessage_name', 50);

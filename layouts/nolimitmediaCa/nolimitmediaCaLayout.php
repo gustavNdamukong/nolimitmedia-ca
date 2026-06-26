@@ -19,6 +19,14 @@ class nolimitmediaCaLayout extends \Dorguzen\Core\DGZ_Layout {
 
         <?= ($this->getMetadata() != '') ? $this->getMetadata() : '<title>Nolimit Media — Digital Agency</title>' ?>
 
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= $rootPath ?>apple-touch-icon.png">
+        <link rel="icon" type="image/svg+xml" href="<?= $rootPath ?>favicon.svg">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= $rootPath ?>favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?= $rootPath ?>favicon-16x16.png">
+        <link rel="manifest" href="<?= $rootPath ?>site.webmanifest">
+        <link rel="shortcut icon" href="<?= $rootPath ?>favicon.ico">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,10 +39,10 @@ class nolimitmediaCaLayout extends \Dorguzen\Core\DGZ_Layout {
         <link href="<?= $rootPath ?>assets/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Dorguzen base theme (sets --site-theme for all built-in views) -->
-        <link href="<?= $rootPath ?>assets/css/style.css" rel="stylesheet">
+        <link href="<?= assetVer('assets/css/style.css') ?>" rel="stylesheet">
 
         <!-- Site stylesheet -->
-        <link href="<?= $rootPath ?>assets/css/nolimitmedia.css" rel="stylesheet">
+        <link href="<?= assetVer('assets/css/nolimitmedia.css') ?>" rel="stylesheet">
 
         <?= $this->getCssHtml() ?>
     </head>

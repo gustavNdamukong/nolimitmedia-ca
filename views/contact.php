@@ -134,7 +134,7 @@ class contact extends \Dorguzen\Core\DGZ_HtmlView
 									<p class="mb-2">
 										<i class="fas fa-phone me-2"></i>
 										<strong>Phone:</strong>
-										<?php $tel = config('app.site_contact_tel'); echo htmlspecialchars(!empty($tel) ? $tel : 'site-contact-number-here'); ?>
+										<?php $tel = config('app.site_contact_tel'); if (!empty($tel)): ?><a class="text-reset" href="tel:<?= htmlspecialchars(preg_replace('/[^0-9+]/', '', $tel)) ?>"><?= htmlspecialchars($tel) ?></a><?php else: echo 'site-contact-number-here'; endif; ?>
 									</p>
 									<p class="mb-0">
 										<i class="fas fa-envelope me-2"></i>
