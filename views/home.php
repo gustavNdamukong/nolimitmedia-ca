@@ -273,7 +273,7 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
                 <div class="col-lg-6">
                     <span class="nlm-label">Why Choose Us</span>
                     <h2 class="nlm-heading">No Limits on What We Can <span class="nlm-gradient-text">Build For You</span></h2>
-                    <p style="color:var(--nlm-text-muted); margin-bottom:2rem;">We don't just build websites — we build growth engines. Every project is approached with strategy, creativity, and a relentless focus on results.</p>
+                    <p style="color:var(--nlm-text); margin-bottom:2rem;">We don't just build websites — we build growth engines. Every project is approached with strategy, creativity, and a relentless focus on results.</p>
 
                     <div class="nlm-why-point">
                         <div class="nlm-why-point-icon"><i class="fas fa-bolt"></i></div>

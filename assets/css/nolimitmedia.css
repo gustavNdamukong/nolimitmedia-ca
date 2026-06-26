@@ -97,7 +97,7 @@ img { max-width: 100%; height: auto; }
 
 .nlm-subheading {
     font-size: 1.05rem;
-    color: var(--nlm-text-muted);
+    color: var(--nlm-text);
     max-width: 600px;
     margin: 0 auto 3rem;
 }
@@ -453,7 +453,7 @@ img { max-width: 100%; height: auto; }
 }
 .nlm-hero-sub {
     font-size: 1.15rem;
-    color: var(--nlm-text-muted);
+    color: var(--nlm-text);
     max-width: 640px;
     margin: 0 auto 2.5rem;
     line-height: 1.8;
@@ -618,7 +618,7 @@ img { max-width: 100%; height: auto; }
     font-size: .95rem;
 }
 .nlm-why-point h6 { font-size: 1rem; font-weight: 700; margin-bottom: .2rem; }
-.nlm-why-point p { font-size: .88rem; color: var(--nlm-text-muted); margin: 0; }
+.nlm-why-point p { font-size: .88rem; color: var(--nlm-text); margin: 0; }
 
 /* ── Blog Preview ───────────────────────────────────────────── */
 .nlm-blog { background: var(--nlm-dark); }
@@ -671,7 +671,7 @@ img { max-width: 100%; height: auto; }
 }
 .nlm-cta-banner-content { position: relative; z-index: 1; text-align: center; }
 .nlm-cta-banner h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
-.nlm-cta-banner p { font-size: 1.05rem; color: var(--nlm-text-muted); margin-bottom: 2rem; }
+.nlm-cta-banner p { font-size: 1.05rem; color: var(--nlm-text); margin-bottom: 2rem; }
 
 /* ── Footer ─────────────────────────────────────────────────── */
 .nlm-footer { background: var(--nlm-dark-2); }
