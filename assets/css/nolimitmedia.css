@@ -326,18 +326,22 @@ img { max-width: 100%; height: auto; }
     top: var(--nlm-header-h);
     right: 0;
     width: 280px;
-    height: calc(100vh - var(--nlm-header-h));
+    height: calc(100vh - var(--nlm-header-h));   /* fallback for browsers without dvh */
+    height: calc(100dvh - var(--nlm-header-h));  /* dynamic viewport: excludes the phone's address/nav bar so the list isn't taller than the visible area */
     background: var(--nlm-dark-2);
     border-left: 1px solid var(--nlm-border);
     display: flex;
     flex-direction: column;
-    padding: 1.5rem 1.25rem;
+    /* extra bottom padding (+ iOS safe-area inset) so the last item / CTA clears
+       the phone's bottom bar / home indicator and stays tappable */
+    padding: 1.5rem 1.25rem calc(2rem + env(safe-area-inset-bottom, 0px));
     gap: .25rem;
     transform: translateX(100%);
     transition: transform .3s ease;
     z-index: 999;
     overflow-y: auto;                  /* scroll long menus instead of clipping them */
     -webkit-overflow-scrolling: touch; /* momentum / swipe scroll on touch devices */
+    overscroll-behavior-y: contain;    /* stop the scroll/bounce chaining to the page */
 }
 .nlm-mobile-nav.open { transform: translateX(0); }
 .nlm-mobile-link {
