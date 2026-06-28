@@ -72,6 +72,11 @@
             <a href="<?= $this->config->getFileRootPath() ?>auth/login" class="nlm-nav-link nlm-nav-login" title="Client Login">
                 <i class="fas fa-user-circle"></i>
             </a>
+            <?php if (config('app.allow_registration') === true): ?>
+            <a href="<?= $this->config->getFileRootPath() ?>auth/signup" class="nlm-nav-link nlm-nav-login" title="Register">
+                <i class="fas fa-user-plus"></i>
+            </a>
+            <?php endif; ?>
             <a href="<?= $this->config->getFileRootPath() ?>feedback" class="nlm-nav-cta">
                 <i class="fas fa-paper-plane"></i> Get In Touch
             </a>
@@ -124,6 +129,9 @@
         <?php endif; ?>
         <a href="<?= $this->config->getFileRootPath() ?>feedback" class="nlm-mobile-link"><i class="fas fa-envelope"></i> Contact Us</a>
         <a href="<?= $this->config->getFileRootPath() ?>auth/login" class="nlm-mobile-link"><i class="fas fa-user-circle"></i> Client Login</a>
+        <?php if (config('app.allow_registration') === true): ?>
+        <a href="<?= $this->config->getFileRootPath() ?>auth/signup" class="nlm-mobile-link"><i class="fas fa-user-plus"></i> Register</a>
+        <?php endif; ?>
         <a href="<?= $this->config->getFileRootPath() ?>feedback" class="nlm-mobile-cta">Get In Touch</a>
     </div>
 </header>
