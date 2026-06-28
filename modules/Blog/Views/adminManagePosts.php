@@ -135,6 +135,12 @@ class adminManagePosts extends \Dorguzen\Core\DGZ_HtmlView
                             <i class="fa fa-comments me-1"></i> Manage Comments
                         </a>
                     </div>
+
+                    <div class="mt-4">
+                        <a href="<?= $rootPath ?>admin/dashboard" class="btn btn-outline-secondary btn-sm">
+                            &larr; Back to Dashboard
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Sidebar: categories -->

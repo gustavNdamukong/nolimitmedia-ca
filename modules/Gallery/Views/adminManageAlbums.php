@@ -134,6 +134,13 @@ class adminManageAlbums extends \Dorguzen\Core\DGZ_AdminHtmlView
                         </div>
                     </div>
                 <?php endif; ?>
+
+                <div class="mt-4">
+                    <a href="<?= $base ?>admin/dashboard" class="btn btn-outline-secondary btn-sm">
+                        &larr; Back to Dashboard
+                    </a>
+                </div>
+
             </div>
         </section>
         <?php
