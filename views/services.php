@@ -207,7 +207,7 @@ class services extends \Dorguzen\Core\DGZ_HtmlView
         <div class="container text-center">
             <span class="nlm-label">Not Sure Where to Start?</span>
             <h2 class="nlm-heading" style="margin-bottom:1rem;">Let's Talk About <span class="nlm-gradient-text">Your Project</span></h2>
-            <p style="color:var(--nlm-text-muted); max-width:540px; margin:0 auto 2rem;">Every project starts with a conversation. Tell us what you need and we'll come back with a clear plan and honest pricing — no obligation.</p>
+            <p style="color:var(--nlm-text); max-width:540px; margin:0 auto 2rem;">Every project starts with a conversation. Tell us what you need and we'll come back with a clear plan and honest pricing — no obligation.</p>
             <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
                 <a href="<?= $base ?>feedback" class="nlm-btn nlm-btn-red">
                     <i class="fas fa-paper-plane"></i> Get In Touch

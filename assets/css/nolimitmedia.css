@@ -681,7 +681,7 @@ img { max-width: 100%; height: auto; }
     border-bottom: 1px solid var(--nlm-border);
 }
 .nlm-footer-logo img { display: block; margin-bottom: 1.25rem; }
-.nlm-footer-tagline { font-size: .9rem; color: var(--nlm-text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
+.nlm-footer-tagline { font-size: .9rem; color: var(--nlm-text); line-height: 1.7; margin-bottom: 1.5rem; }
 
 .nlm-footer-social { display: flex; gap: .6rem; }
 .nlm-footer-social a {
@@ -879,6 +879,8 @@ p { color: var(--nlm-text); }
 .text-dark   { color: var(--nlm-white)      !important; }
 .text-muted  { color: var(--nlm-text-muted) !important; }
 .text-black  { color: var(--nlm-white)      !important; }
+.text-nlm-blue  { color: var(--nlm-blue)      !important; }
+.text-blue-glow  { color: var(--nlm-blue-glow)      !important; }
 
 /* ── Backgrounds ─────────────────────────────────────────────── */
 .bg-white { background: var(--nlm-dark-2) !important; }
@@ -1082,7 +1084,8 @@ p { color: var(--nlm-text); }
 }
 .album-card h5, .album-card h6,
 .video-card h5, .video-card h6 { color: var(--nlm-white)      !important; }
-.album-card p,  .video-card p  { color: var(--nlm-text-muted)  !important; }
+.album-card p,  .video-card p  { color: var(--nlm-white)  !important; }
+.album-card .album-name  { color: var(--nlm-blue)  !important; }
 .album-name    { color: var(--nlm-white)      !important; }
 .album-desc    { color: var(--nlm-text-muted) !important; }
 .cover-placeholder { background: var(--nlm-dark-3) !important; color: var(--nlm-border) !important; }

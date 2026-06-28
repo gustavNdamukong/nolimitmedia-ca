@@ -50,9 +50,9 @@ class galleryAlbum extends \Dorguzen\Core\DGZ_HtmlView
 
         <section class="py-5">
             <div class="container">
-                <h2 class="fw-bold mb-2" style="font-size:1.9rem; color:#222; letter-spacing:.2px;"><?= htmlspecialchars($album['album_name']) ?></h2>
+                <h2 class="fw-bold mb-2 text-nlm-blue" style="font-size:1.9rem; color:#222; letter-spacing:.2px;"><?= htmlspecialchars($album['album_name']) ?></h2>
                 <?php if (!empty($album['album_description'])): ?>
-                    <p class="text-muted mb-4"><?= htmlspecialchars($album['album_description']) ?></p>
+                    <p class="text-dark mb-4"><?= htmlspecialchars($album['album_description']) ?></p>
                 <?php endif; ?>
 
                 <?php if (empty($images)): ?>

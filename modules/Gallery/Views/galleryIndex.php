@@ -20,7 +20,7 @@ class galleryIndex extends \Dorguzen\Core\DGZ_HtmlView
             .album-card:hover .cover-wrap img { transform: scale(1.06); }
             .album-card .cover-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #bbb; font-size: 3rem; }
             .album-badge { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,.55); color: #fff; border-radius: 20px; padding: 3px 12px; font-size: .78rem; }
-            .album-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; color: #222; }
+            .album-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
             .album-desc { font-size: .83rem; color: #777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         </style>
 
