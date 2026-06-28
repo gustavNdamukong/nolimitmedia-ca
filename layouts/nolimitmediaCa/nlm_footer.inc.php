@@ -96,7 +96,7 @@
 
     <div class="nlm-footer-bottom">
         <div class="container">
-            <p>&copy; <?= date('Y') ?> <span class="nlm-blue">No Limit</span><span class="nlm-red">Media</span>. All rights reserved.</p>
+            <p>&copy; <?= date('Y') ?> <span class="nlm-blue">Nolimit</span><span class="nlm-red">Media</span>. All rights reserved.</p>
             <p><a href="<?= $this->config->getFileRootPath() ?>privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="<?= $this->config->getFileRootPath() ?>terms">Terms of Service</a></p>
         </div>
     </div>
