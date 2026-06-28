@@ -76,8 +76,6 @@ class nolimitmediaCaLayout extends \Dorguzen\Core\DGZ_Layout {
             <i class="fas fa-chevron-up"></i>
         </button>
 
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <!-- Bootstrap JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
         <!-- Site JS -->
