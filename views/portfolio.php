@@ -109,6 +109,13 @@ class portfolio extends \Dorguzen\Core\DGZ_HtmlView
                 background: linear-gradient(135deg, #f0f4ff, #e8f0ff);
             }
             .pf-placeholder i { font-size: 3rem; color: #c5d0e8; }
+
+            /* ── Dark-theme readability (match the gallery album styling) ── */
+            .pf-card-excerpt { color: var(--nlm-white, #ffffff) !important; }                       /* grid description: bright white */
+            .pf-intro        { color: var(--nlm-text,  #e4e4f0) !important; }                        /* intro line under heading: brightened */
+            #pf-modal-desc   { color: var(--nlm-white, #ffffff) !important; }                        /* detail popup description: bright white */
+            #portfolioModal .modal-header { background: var(--nlm-dark-2, #111118) !important; }      /* dark header so a blue title reads */
+            #portfolioModal .modal-title  { color: var(--nlm-blue, #17C3F5) !important; }            /* title: bright blue (like album names) */
         </style>
 
         <div class="container-xxl py-5">
@@ -118,7 +125,7 @@ class portfolio extends \Dorguzen\Core\DGZ_HtmlView
                     <h6 class="text-secondary text-uppercase fw-bold ls-2">Our Work</h6>
                     <h2 class="mb-0">Portfolio</h2>
                     <hr class="mx-auto mt-2" style="width:60px; border-top:3px solid var(--site-theme,#1565C0);">
-                    <p class="text-muted mt-3" style="max-width:560px; margin:0 auto;">
+                    <p class="pf-intro mt-3" style="max-width:560px; margin:0 auto;">
                         A selection of projects we have worked on. Click any item to learn more.
                     </p>
                 </div>
@@ -219,7 +226,7 @@ class portfolio extends \Dorguzen\Core\DGZ_HtmlView
                                 <a id="pf-modal-website" href="#" target="_blank" rel="noopener"
                                    style="color: var(--site-theme, #1565C0); word-break:break-all;"></a>
                             </div>
-                            <p id="pf-modal-desc" class="text-secondary" style="white-space:pre-line; line-height:1.75;"></p>
+                            <p id="pf-modal-desc" style="white-space:pre-line; line-height:1.75;"></p>
                         </div>
                     </div>
                     <div class="modal-footer border-0 px-4 pb-4 pt-0">
