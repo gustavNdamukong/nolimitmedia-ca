@@ -32,6 +32,55 @@ class HomeController extends DGZ_Controller
         $view->show();
     }
 
+    public function voicewren(): void
+    {
+        $view = DGZ_View::getView('voicewren', $this, 'html');
+        $this->setLayoutDirectory($this->config->getConfig()['layoutDirectory']);
+        $this->setLayoutView($this->config->getConfig()['defaultLayout']);
+        $this->setPageTitle('VoiceWren');
+        $view->show();
+    }
+
+    public function voicewrenInquiry(): void
+    {
+        header('Content-Type: application/json');
+
+        $val      = new DGZ_Validate();
+        $name     = $val->fix_string($_POST['name']     ?? '');
+        $email    =                  $_POST['email']    ?? '';
+        $phone    = $val->fix_string($_POST['phone']    ?? '');
+        $business = $val->fix_string($_POST['business'] ?? '');
+        $message  = $val->fix_string($_POST['message']  ?? '');
+
+        $service = container(FeedbackService::class);
+        $error   = $service->validateContactInput($name, $email, $message);
+
+        if ($error !== '') {
+            echo json_encode(['success' => false, 'message' => strip_tags($error)]);
+            exit;
+        }
+
+        $body = '[VoiceWren Enquiry]'
+            . ($business !== '' ? ' (' . $business . ')' : '')
+            . ' ' . $message;
+
+        $service->saveContactMessage([
+            'name'    => $name,
+            'email'   => $email,
+            'phone'   => $phone,
+            'message' => $body,
+        ]);
+
+        $messenger = new DGZ_Messenger();
+        $messenger->sendContactFormMsgToAdmin($name, $email, $phone, $body);
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Thank you. Your request has been received — we\'ll call you back within one business day.',
+        ]);
+        exit;
+    }
+
     public function codingLessonsInquiry(): void
     {
         header('Content-Type: application/json');

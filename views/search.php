@@ -96,8 +96,8 @@ class search extends \Dorguzen\Core\DGZ_HtmlView
                                 <a href="<?= $base ?>portfolio" class="text-decoration-none">
                                     <div class="card border-0 shadow-sm h-100" style="border-radius:10px;">
                                         <div class="card-body">
-                                            <h6 class="card-title fw-semibold text-dark"><?= htmlspecialchars($item['portfolio_title'] ?? '') ?></h6>
-                                            <p class="card-text text-muted small mb-0"><?= htmlspecialchars(substr(strip_tags($item['portfolio_description'] ?? ''), 0, 120)) ?>...</p>
+                                            <h6 class="card-title fw-semibold text-dark"><?= esc($item['portfolio_title'] ?? '') ?></h6>
+                                            <p class="card-text text-muted small mb-0"><?= excerpt($item['portfolio_description'] ?? '', 120) ?>...</p>
                                         </div>
                                     </div>
                                 </a>

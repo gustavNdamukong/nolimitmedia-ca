@@ -15,6 +15,12 @@
                     Services <i class="fas fa-chevron-down" style="font-size:.65rem; opacity:.7;"></i>
                 </a>
                 <div class="nlm-dropdown-menu">
+                    <a href="<?= $this->config->getFileRootPath() ?>services" class="nlm-dropdown-item">
+                        <i class="fas fa-th-list"></i> All Services
+                    </a>
+                    <a href="<?= $this->config->getFileRootPath() ?>voicewren" class="nlm-dropdown-item">
+                        <i class="fas fa-phone-volume"></i> VoiceWren
+                    </a>
                     <a href="<?= $this->config->getFileRootPath() ?>coding-lessons" class="nlm-dropdown-item">
                         <i class="fas fa-graduation-cap"></i> Coding Lessons
                     </a>
@@ -95,6 +101,9 @@
         <div class="nlm-mobile-section-label">Services</div>
         <a href="<?= $this->config->getFileRootPath() ?>services" class="nlm-mobile-link nlm-mobile-sub">
             <i class="fas fa-th-list"></i> All Services
+        </a>
+        <a href="<?= $this->config->getFileRootPath() ?>voicewren" class="nlm-mobile-link nlm-mobile-sub">
+            <i class="fas fa-phone-volume"></i> VoiceWren
         </a>
         <a href="<?= $this->config->getFileRootPath() ?>coding-lessons" class="nlm-mobile-link nlm-mobile-sub">
             <i class="fas fa-graduation-cap"></i> Coding Lessons

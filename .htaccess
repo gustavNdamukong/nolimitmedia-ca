@@ -1,6 +1,40 @@
 
 RewriteEngine on
 
+# ------------------------------- RULE: canonical host (must come FIRST)
+#
+# Search engines treat these as four separate websites serving identical pages:
+#
+#     http://nolimitmedia.ca/…        https://nolimitmedia.ca/…
+#     http://www.nolimitmedia.ca/…    https://www.nolimitmedia.ca/…
+#
+# That splits ranking signals across hostnames and can produce duplicate entries
+# in Search Console / Bing Webmaster Tools. These two rules fold every variant
+# onto ONE address — https://nolimitmedia.ca — with a permanent (301) redirect.
+#
+# Both rules are keyed on the real production hostname, so they never fire under
+# MAMP (localhost / 127.0.0.1) and local development is unaffected.
+#
+# The X-Forwarded-Proto check matters on shared hosting: when TLS is terminated
+# by a proxy, %{HTTPS} is not "on" even though the visitor is already on https,
+# and without it the rule would redirect to itself in a loop.
+
+# www  ->  apex (and straight to https in the same hop)
+#
+# Loop-safe by construction: after the redirect the host is the apex form, so
+# this condition can never match again.
+RewriteCond %{HTTP_HOST} ^www\.nolimitmedia\.ca$ [NC]
+RewriteRule ^ https://nolimitmedia.ca%{REQUEST_URI} [L,R=301]
+
+# NOTE — plain http:// is deliberately NOT handled here.
+# Pages already 301 to https via the framework; only static files served
+# directly by Apache (sitemap.xml, robots.txt) are reachable over http, which
+# is a negligible SEO issue. An .htaccess http->https rule is the one rule that
+# can cause an infinite redirect loop if the host terminates TLS at a proxy and
+# exposes neither %{HTTPS} nor X-Forwarded-Proto. If we want it, the safe route
+# is cPanel's built-in "Force HTTPS Redirect" toggle, which the host configures
+# correctly for its own infrastructure.
+
 # ------------------------------- HOW DGZ ROUTING WORKS
 #
 # This file's only job is to decide whether a request should be handled by

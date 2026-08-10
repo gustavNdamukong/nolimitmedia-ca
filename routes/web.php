@@ -15,6 +15,10 @@ $router->get('/coding-lessons',          'HomeController@codingLessons')->name('
 $router->post('/coding-lessons/inquiry', 'HomeController@codingLessonsInquiry');
 $router->post('/coding-lessons/book',    'HomeController@codingLessonsBook');
 
+// VoiceWren — our own AI receptionist product (service detail page)
+$router->get('/voicewren',           'HomeController@voicewren')->name('voicewren');
+$router->post('/voicewren/inquiry',  'HomeController@voicewrenInquiry');
+
 $router->get("/portfolio",                "PortfolioController@portfolio");
 $router->get('/search',                   'SearchController@search');
 

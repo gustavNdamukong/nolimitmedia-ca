@@ -10,7 +10,7 @@ class services extends \Dorguzen\Core\DGZ_HtmlView
         $this->addMetadata([
             '<title>Services — Nolimit Media | Canadian Digital Agency</title>',
             '<meta name="description" content="From branding and web development to AI consulting, SEO, mobile apps, and coding lessons — Nolimit Media covers every layer of your digital presence.">',
-            '<meta name="keywords" content="web design Canada, web development, SEO services, branding, mobile apps, AI consulting, coding lessons, digital agency Canada">',
+            '<meta name="keywords" content="web design Canada, web development, SEO services, branding, mobile apps, AI consulting, AI receptionist, AI phone answering, coding lessons, digital agency Canada">',
             '<meta property="og:title" content="Services — Nolimit Media">',
             '<meta property="og:description" content="From branding and web development to AI consulting, SEO, mobile apps, and coding lessons — Nolimit Media covers every layer of your digital presence.">',
             '<meta property="og:type" content="website">',
@@ -33,6 +33,23 @@ class services extends \Dorguzen\Core\DGZ_HtmlView
 
     <?php
     $groups = [
+        [
+            'label'    => 'Our Own Products',
+            'heading'  => 'Software We Built, Own and <span class="nlm-gradient-text">Run Ourselves</span>',
+            'sub'      => 'Not everything we offer is built to order. VoiceWren is our own product — the clearest proof of what we can build for you.',
+            'red'      => true,
+            'services' => [
+                [
+                    'icon'  => 'fas fa-phone-volume',
+                    'title' => 'VoiceWren — AI Receptionist',
+                    'desc'  => 'An AI receptionist that answers your business phone around the clock, holds a real conversation with the caller, books the job, and sends you the lead with a full transcript. Designed, built, hosted and supported entirely in-house.',
+                    'red'     => true,
+                    'logo'    => 'voicewren-bird.png',
+                    'logoAlt' => 'VoiceWren',
+                    'link'    => 'voicewren',
+                ],
+            ],
+        ],
         [
             'label'    => 'Design & Branding',
             'heading'  => 'Make Your Brand <span class="nlm-gradient-text">Impossible to Ignore</span>',
@@ -188,6 +205,11 @@ class services extends \Dorguzen\Core\DGZ_HtmlView
                         <div class="nlm-service-icon"><i class="<?= $svc['icon'] ?>"></i></div>
                         <h5 class="nlm-service-title"><?= $svc['title'] ?></h5>
                         <p class="nlm-service-desc"><?= $svc['desc'] ?></p>
+                        <?php if (!empty($svc['logo'])): ?>
+                        <img src="<?= $base ?>assets/images/<?= $svc['logo'] ?>" alt="<?= $svc['logoAlt'] ?? '' ?>"
+                             width="56" height="56" loading="lazy"
+                             style="display:block; margin:.25rem 0 1rem; opacity:.95;">
+                        <?php endif; ?>
                         <?php if (!empty($svc['link'])): ?>
                         <a href="<?= $base . $svc['link'] ?>" class="nlm-btn nlm-btn-outline" style="margin-top:.5rem; font-size:.85rem; padding:.45rem 1.1rem;">
                             <i class="fas fa-arrow-right"></i> Learn More

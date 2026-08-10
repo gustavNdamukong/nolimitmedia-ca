@@ -134,10 +134,10 @@ class portfolio extends \Dorguzen\Core\DGZ_HtmlView
                     <div class="row g-4">
                         <?php foreach ($items as $item) {
                             $id      = (int) $item['portfolio_id'];
-                            $title   = htmlspecialchars($item['portfolio_title'] ?? '');
-                            $company = htmlspecialchars($item['portfolio_company_name'] ?? '');
-                            $website = htmlspecialchars($item['portfolio_website'] ?? '');
-                            $desc    = htmlspecialchars($item['portfolio_description'] ?? '');
+                            $title   = esc($item['portfolio_title'] ?? '');
+                            $company = esc($item['portfolio_company_name'] ?? '');
+                            $website = esc($item['portfolio_website'] ?? '');
+                            $desc    = esc($item['portfolio_description'] ?? '');
 
                             // Full image for modal; thumbnail for card display
                             $fullImgSrc = !empty($item['portfolio_image'])
@@ -184,7 +184,7 @@ class portfolio extends \Dorguzen\Core\DGZ_HtmlView
                                         <?php } ?>
                                         <?php if ($item['portfolio_description']) { ?>
                                             <div class="pf-card-excerpt">
-                                                <?= htmlspecialchars(substr($item['portfolio_description'], 0, 120)) ?>
+                                                <?= excerpt($item['portfolio_description'], 120) ?>
                                             </div>
                                         <?php } ?>
                                     </div>

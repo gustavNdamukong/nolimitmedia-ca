@@ -138,10 +138,10 @@ class home extends \Dorguzen\Core\DGZ_HtmlView
 
             <div class="row g-4">
                 <?php foreach ($portfolioItems as $pfItem):
-                    $pfTitle   = htmlspecialchars($pfItem['portfolio_title']        ?? '');
-                    $pfCompany = htmlspecialchars($pfItem['portfolio_company_name'] ?? '');
-                    $pfWebsite = htmlspecialchars($pfItem['portfolio_website']      ?? '');
-                    $pfDesc    = htmlspecialchars($pfItem['portfolio_description']  ?? '');
+                    $pfTitle   = esc($pfItem['portfolio_title']        ?? '');
+                    $pfCompany = esc($pfItem['portfolio_company_name'] ?? '');
+                    $pfWebsite = esc($pfItem['portfolio_website']      ?? '');
+                    $pfDesc    = esc($pfItem['portfolio_description']  ?? '');
                     $pfImgFull  = '';
                     $pfImgThumb = '';
                     if (!empty($pfItem['portfolio_image'])) {

@@ -17,7 +17,100 @@ class nolimitmediaCaLayout extends \Dorguzen\Core\DGZ_Layout {
         <!-- Google Search Console domain-ownership verification -->
         <meta name="google-site-verification" content="MO4gJT6IgIYJ8ErceXq2H3tMp06CeJN1y-xF5Xtz3PM">
 
-        <?= ($this->getMetadata() != '') ? $this->getMetadata() : '<title>Nolimit Media — Digital Agency</title>' ?>
+        <?php
+        $pageMetadata = $this->getMetadata();
+        echo ($pageMetadata != '') ? $pageMetadata : '<title>Nolimit Media — Digital Agency</title>';
+
+        // Canonical URL — skipped when a view already supplied its own (e.g. views/voicewren.php),
+        // so we never emit two competing canonical tags on one page.
+        if (stripos($pageMetadata, 'rel="canonical"') === false) {
+            echo "\n        " . '<link rel="canonical" href="' . htmlspecialchars(canonicalUrl($rootPath), ENT_QUOTES, 'UTF-8') . '">';
+        }
+        ?>
+
+        <?php
+        // ------------------------------------------------------------------
+        // Organization structured data.
+        //
+        // Several unrelated businesses trade under variants of "Nolimit Media",
+        // so Google needs help deciding which entity this site belongs to. The
+        // sameAs links are what does that work: each one is a profile we control
+        // that names the same business, and together they disambiguate us from
+        // the others. The stable @id lets any future markup (Service, Article,
+        // BreadcrumbList) point back at this one entity instead of re-declaring it.
+        //
+        // Contact details are read from config so they cannot drift out of step
+        // with the footer, which reads the same keys.
+        // ------------------------------------------------------------------
+        $nlmSite  = rtrim((string) (config('app.appURL') ?: 'https://nolimitmedia.ca'), '/');
+        $nlmEmail = trim((string) config('app.appEmail'));
+        $nlmTel   = trim((string) config('app.site_contact_tel'));
+
+        $nlmOrg = [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'Organization',
+            '@id'         => $nlmSite . '/#organization',
+            'name'        => 'Nolimit Media',
+            'url'         => $nlmSite . '/',
+            'description' => 'Canadian digital agency building websites, web apps, mobile apps and AI automation for businesses across the Greater Toronto Area.',
+            'logo'        => [
+                '@type'  => 'ImageObject',
+                'url'    => $nlmSite . '/assets/images/nolimit-logo-square.png',
+                'width'  => 720,
+                'height' => 720,
+            ],
+            // Service-area business: the Google Business Profile hides the street
+            // address, so declaring one here would contradict it. Region and
+            // country are enough to place the entity.
+            'address' => [
+                '@type'          => 'PostalAddress',
+                'addressRegion'  => 'ON',
+                'addressCountry' => 'CA',
+            ],
+            'areaServed' => [
+                '@type' => 'AdministrativeArea',
+                'name'  => 'Greater Toronto Area, Ontario, Canada',
+            ],
+            // VoiceWren is our product, not another name for us — a Brand, not a
+            // sameAs. This ties voicewren.com to this entity without claiming the
+            // two sites are the same thing.
+            'brand' => [
+                '@type' => 'Brand',
+                'name'  => 'VoiceWren',
+                'url'   => 'https://voicewren.com/',
+            ],
+            'sameAs' => [
+                'https://www.linkedin.com/company/nolimit-media/',
+                // TODO: add the Google Business Profile URL once verification
+                // clears — Google Maps "Share" gives the permanent maps.app.goo.gl link.
+            ],
+        ];
+
+        if ($nlmEmail !== '' || $nlmTel !== '') {
+            $nlmPoint = [
+                '@type'             => 'ContactPoint',
+                'contactType'       => 'customer service',
+                'areaServed'        => 'CA',
+                'availableLanguage' => 'English',
+            ];
+            if ($nlmEmail !== '') { $nlmPoint['email'] = $nlmEmail; }
+            if ($nlmTel !== '') {
+                // Config stores the number as typed (bare digits). Schema.org wants
+                // full international format, and it has to match the Google Business
+                // Profile number character-for-character to count as the same business.
+                $digits = preg_replace('/[^0-9+]/', '', $nlmTel);
+                if (!str_starts_with($digits, '+')) {
+                    $digits = (strlen($digits) === 10) ? '+1' . $digits : '+' . $digits;
+                }
+                $nlmPoint['telephone'] = $digits;
+            }
+            $nlmOrg['contactPoint'] = [$nlmPoint];
+        }
+        ?>
+        <script type="application/ld+json">
+<?= json_encode($nlmOrg, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_HEX_TAG) ?>
+
+        </script>
 
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="<?= $rootPath ?>apple-touch-icon.png">
