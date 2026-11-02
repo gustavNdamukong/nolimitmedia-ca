@@ -13,6 +13,7 @@ use Dorguzen\Core\Events\EventService;
 use Dorguzen\Core\Events\EventDispatcher;
 use Dorguzen\Core\Events\ListenerResolver;
 use Dorguzen\Core\Queues\QueueManager;
+use Dorguzen\Core\Queues\QueuePayloadSigner;
 use Dorguzen\Core\Queues\Drivers\SyncQueue;
 use Dorguzen\Core\Queues\Drivers\DatabaseQueue;
 use Dorguzen\Core\Database\Graph\DGZ_Neo4jClient;
@@ -87,7 +88,10 @@ $container->singleton(EventService::class, function ($c) {
 //--------------------------------------------------------------------------------------
 $container->singleton(SyncQueue::class, fn () => new SyncQueue());
 $container->singleton(DatabaseQueue::class, function ($c) {
-    return new DatabaseQueue($c->get(DGZ_DBAdapter::class));
+    return new DatabaseQueue(
+        $c->get(DGZ_DBAdapter::class),
+        new QueuePayloadSigner((string) $c->get(Config::class)->get('app.queue_signing_key'))
+    );
 });
 $container->singleton(QueueManager::class, function ($c) {
     return new QueueManager($c->get(Config::class), $c);
@@ -192,6 +196,16 @@ if (class_exists(\Laudis\Neo4j\ClientBuilder::class)) {
 // Start sessions
 //--------------------------------------------------------------------------------------
 if (session_status() === PHP_SESSION_NONE) {
+    if (!headers_sent()) {
+        // Refuse session IDs the server didn't issue, and keep the cookie away from
+        // scripts and cross-site requests instead of relying on each host's defaults.
+        ini_set('session.use_strict_mode', '1');
+        session_set_cookie_params([
+            'httponly' => true,
+            'samesite' => 'Lax',
+            'secure'   => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
+        ]);
+    }
     session_start();
 }
 //--------------------------------------------------------------------------------------
